@@ -26,7 +26,7 @@ import javax.validation.constraints.Size;
  * @author Alek
  */
 @Entity
-@Table(name = "address")
+@Table(name = "Address")
 @NamedQueries({
     @NamedQuery(name = "Address.findAll", query = "SELECT a FROM Address a")
     , @NamedQuery(name = "Address.findByStreet", query = "SELECT a FROM Address a WHERE a.street = :street")
@@ -45,7 +45,7 @@ public class Address implements Serializable {
     private String additionalInfo;
     @JoinColumn(name = "CityInfo_zipCode", referencedColumnName = "zipCode", nullable = false)
     @ManyToOne(optional = false)
-    private Cityinfo cityinfo;
+    private CityInfo cityInfo;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "address")
     private Collection<Person> personCollection;
 
@@ -72,12 +72,12 @@ public class Address implements Serializable {
         this.additionalInfo = additionalInfo;
     }
 
-    public Cityinfo getCityinfo() {
-        return cityinfo;
+    public CityInfo getCityInfo() {
+        return cityInfo;
     }
 
-    public void setCityinfo(Cityinfo cityinfo) {
-        this.cityinfo = cityinfo;
+    public void setCityInfo(CityInfo cityInfo) {
+        this.cityInfo = cityInfo;
     }
 
     public Collection<Person> getPersonCollection() {

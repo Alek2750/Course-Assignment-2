@@ -26,7 +26,7 @@ import javax.validation.constraints.Size;
  * @author Alek
  */
 @Entity
-@Table(name = "hobby", uniqueConstraints = {
+@Table(name = "Hobby", uniqueConstraints = {
     @UniqueConstraint(columnNames = {"name"})})
 @NamedQueries({
     @NamedQuery(name = "Hobby.findAll", query = "SELECT h FROM Hobby h")
@@ -44,7 +44,7 @@ public class Hobby implements Serializable {
     @Size(max = 45)
     @Column(name = "description", length = 45)
     private String description;
-    @JoinTable(name = "person_has_hobby", joinColumns = {
+    @JoinTable(name = "Person_has_Hobby", joinColumns = {
         @JoinColumn(name = "Hobby_name", referencedColumnName = "name", nullable = false)}, inverseJoinColumns = {
         @JoinColumn(name = "Person_id", referencedColumnName = "id", nullable = false)})
     @ManyToMany

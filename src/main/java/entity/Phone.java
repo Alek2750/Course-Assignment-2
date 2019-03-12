@@ -24,7 +24,7 @@ import javax.validation.constraints.Size;
  * @author Alek
  */
 @Entity
-@Table(name = "phone", uniqueConstraints = {
+@Table(name = "Phone", uniqueConstraints = {
     @UniqueConstraint(columnNames = {"number"})})
 @NamedQueries({
     @NamedQuery(name = "Phone.findAll", query = "SELECT p FROM Phone p")
