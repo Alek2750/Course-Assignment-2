@@ -1,5 +1,6 @@
 package dataFacade;
 
+import DTO.PersonDTO;
 import entity.Person;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -14,6 +15,10 @@ public class PersonFacade {
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu2", null);
     EntityManager em = emf.createEntityManager();
 
+    public void addEntityManagerFactory(EntityManagerFactory emf) {
+        this.emf = emf;
+    }
+    
     public Person addPerson(Person p) {
         try {
             em.getTransaction().begin();
@@ -57,4 +62,26 @@ public class PersonFacade {
         return null;
     }
 
+    public PersonDTO getPersonByID(int id) {
+        EntityManager em = emf.createEntityManager();
+
+        try {
+            //Person pers = null;
+            PersonDTO persDTO = null;
+
+            em.getTransaction().begin();
+            Person pers = em.find(Person.class, id);
+
+            if (pers != null) {
+                persDTO = new PersonDTO(pers);
+            }
+
+            em.getTransaction().commit();
+            return persDTO;
+
+        } finally {
+            em.close();
+        }
+    }
+    
 }
