@@ -5,10 +5,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-/**
- *
- * @author Alek
- */
+
 public class PersonFacade {
     
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu2", null);
