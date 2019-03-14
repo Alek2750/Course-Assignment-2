@@ -40,7 +40,6 @@ public class PersonFacade {
     }
 
     public Person updatePerson(Person p) {
-        //Skal nok bruge DTO her
 
         try {
             em.getTransaction().begin();
@@ -60,8 +59,6 @@ public class PersonFacade {
     }
 
     public PersonDTO getPersonByID(int id) {
-        EntityManager em = emf.createEntityManager();
-
         try {
             //Person pers = null;
             PersonDTO persDTO = null;
